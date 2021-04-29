@@ -14,12 +14,14 @@
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "dev": "nodemon index.ts",
+    "dev": "NODE_ENV=development nodemon index.ts",
     "build": "tsc --project ./"
   },
   "dependencies": {
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "helmet": "^4.5.0",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
   },
