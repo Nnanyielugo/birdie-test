@@ -1,17 +1,8 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
+import { IEvent } from '../interfaces';
 import * as db from '../db';
 
-interface Event extends Model {
-  id: string;
-  event_type: string;
-  visit_id: string;
-  timestamp: Date;
-  caregiver_id: string;
-  care_recipient_id: string;
-  mood: string;
-}
-
-export const EventModel = db.sequelize.define<Event>(
+export const EventModel = db.sequelize.define<IEvent>(
   'events',
   {
     id: {

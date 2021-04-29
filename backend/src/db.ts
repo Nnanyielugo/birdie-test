@@ -1,17 +1,8 @@
-import { Sequelize, Options } from 'sequelize';
+import { Sequelize } from 'sequelize';
+import { IConfigOptions } from './interfaces';
 import * as config from 'config';
 
-type Dialect = 'mysql';
-interface DbConfigOptions extends Options {
-  host: string;
-  port: number;
-  username: string;
-  password: string;
-  database: string;
-  dialect: Dialect;
-}
-
-export const dbConfig: DbConfigOptions = config.get('dbConfig');
+export const dbConfig: IConfigOptions = config.get('dbConfig');
 export const sequelize = new Sequelize(
   dbConfig.database,
   dbConfig.username,

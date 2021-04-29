@@ -14,7 +14,7 @@
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "dev": "NODE_ENV=development nodemon index.ts",
+    "dev": "nodemon index.ts",
     "build": "tsc --project ./"
   },
   "dependencies": {
