@@ -1,8 +1,12 @@
 import * as express from 'express';
-import { pingController } from './controllers/ping';
-
+import * as logger from 'morgan';
+// import { pingController } from './controllers/ping';
+import { appRouter as apiRouter } from './routes';
 const app: express.Express = express();
 
-app.use(pingController);
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', apiRouter);
 
 export default app;
