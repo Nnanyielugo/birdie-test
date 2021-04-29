@@ -1,6 +1,5 @@
 import * as express from 'express';
 import * as logger from 'morgan';
-// import { pingController } from './controllers/ping';
 import { appRouter as apiRouter } from './routes';
 const app: express.Express = express();
 
