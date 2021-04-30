@@ -7,7 +7,7 @@ export async function findAll(
   next: NextFunction
 ): Promise<void> {
   try {
-    let limit = 50;
+    let limit = 0;
     let skip = 0;
 
     if (typeof req.query.limit === 'string') {

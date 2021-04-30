@@ -10,12 +10,17 @@ describe('Events Controller', (): void => {
       done();
     }
   );
+
   describe('Passing tests', (): void => {
     it('Fetches Events', async (): Promise<void> => {
-      const response = await request(app).get('/api/events');
+      const limit = 20;
+      const response = await request(app)
+        .get('/api/events')
+        .query({ limit });
 
       expect(response.status).toBe(200);
       expect(response.body).toHaveProperty('events');
+      expect(response.body.events.length).toBe(limit);
       expect(response.body.events[0]).toHaveProperty('payload');
     });
   });
