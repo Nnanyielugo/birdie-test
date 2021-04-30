@@ -1,3 +1,11 @@
-node_modules/
-package-lock.json
-.idea
+/**/node_modules/
+/**/package-lock.json
+/**/.idea
+/**/config/
+/**/coverage
+/frontend/build
+/**/.DS_Store
+/**/npm-debug.log*
+/**/.nyc_output
+/**/lib
+/**/lib_test
