@@ -2,9 +2,9 @@
 import { IError } from '../interfaces';
 export class CustomError extends Error implements IError {
   constructor(
-    public message: string,
+    public name: string,
     public status: number,
-    public name: string
+    public message: string
   ) {
     super(message);
   }
