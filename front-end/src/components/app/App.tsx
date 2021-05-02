@@ -4,6 +4,7 @@ import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import { Events, AppActions } from '@App/store/interfaces';
 import Title from '@App/components/Title';
 import Logo from '@App/components/Logo';
 import SubTitle from '@App/components/SubTitle';
@@ -11,12 +12,15 @@ import SubTitle from '@App/components/SubTitle';
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
 interface AppProps {
-
+  events: Events[];
+  fetchEvents: () => void;
 }
 
-interface AppState {
-
+interface DispatchReturn {
+  fetchEvents: () => void;
 }
+
+interface AppState {}
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -42,6 +46,10 @@ class App extends React.Component<AppProps, AppState> {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
   public render() {
     return (
       <>
@@ -56,8 +64,13 @@ class App extends React.Component<AppProps, AppState> {
   }
 }
 
-const mapStateToProps = (state: RootState, ownProps: object) => {};
+const mapStateToProps = (state: RootState, ownProps: object) => {
+  const events = state.events.events;
+  return { events };
+};
 
-const mapDispatchToProps = (dispatch: Dispatch<RootState>) => {};
+const mapDispatchToProps = (dispatch: Dispatch<RootState>): DispatchReturn => ({
+  fetchEvents: () => dispatch({ type: AppActions.FetchEventsRequested }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,5 +1,7 @@
 import * as express from 'express';
 import * as logger from 'morgan';
+import * as cors from 'cors';
+import * as helmet from 'helmet';
 import { appRouter as apiRouter } from './routes';
 import { IError } from './interfaces';
 import { CustomError } from './utils/Error';
@@ -9,7 +11,14 @@ const isDev: boolean = app.get('env') === 'development';
 
 if (isDev) {
   app.use(logger('dev'));
+  app.use(
+    cors({
+      origin: 'http://localhost:3000',
+    })
+  );
 }
+
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', apiRouter);

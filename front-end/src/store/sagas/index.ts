@@ -1,5 +1,8 @@
+import { all } from 'redux-saga/effects';
+import { watchInitFetchEvents } from './events';
+
 function* initSaga() {
-  yield [];
+  yield all([watchInitFetchEvents()]);
 }
 
 export default initSaga;
