@@ -37,6 +37,7 @@ const Item = styled.li`
     }
   }
   :nth-child(even) ${Card} {
+    text-align: right;
     left: -469px;
     &::before {
       right: -15px;
@@ -47,6 +48,7 @@ const Item = styled.li`
   @media (max-width: 600px) {
     margin-left: 20px;
     :nth-child(even) ${Card} {
+      text-align: left;
       left: 45px
       ::before {
         left: -15px;
