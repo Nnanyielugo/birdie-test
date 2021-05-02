@@ -38,7 +38,7 @@ const Item = styled.li`
   }
   :nth-child(even) ${Card} {
     text-align: right;
-    left: -469px;
+    left: -320px;
     &::before {
       right: -15px;
       border-width: 8px 0 8px 16px;
