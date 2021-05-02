@@ -1,11 +1,11 @@
-import * as config from 'config';
+// import * as config from 'config';
 import axios from 'axios';
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { AppActions, EventsReturn } from '../interfaces';
 
 async function fetchEvents(): Promise<EventsReturn> {
   try {
-    const apiEndpoint = config.get('apiEndpoint');
+    const apiEndpoint = process.env.REACT_APP_apiEndpoint;
     const response = await axios.get(`${apiEndpoint}/api/events`);
     if (response.status >= 200 && response.status <= 400) {
       return response.data;
@@ -17,7 +17,7 @@ async function fetchEvents(): Promise<EventsReturn> {
   }
 }
 
-async function* initFetchEvents(): any {
+async function* initFetchEvents(): AsyncGenerator {
   try {
     const events = yield call(fetchEvents);
     yield put({ type: AppActions.FetchEventsSucceeded, events });

@@ -3,9 +3,10 @@
 /**/.idea
 /**/config/
 /**/coverage
-/frontend/build
+/front-end/build
 /**/.DS_Store
 /**/npm-debug.log*
 /**/.nyc_output
 /**/lib
 /**/lib_test
+/**/.env*
