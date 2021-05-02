@@ -26,6 +26,8 @@ export async function findAll(
     });
     res.status(200).json({
       events,
+      limit,
+      skip,
     });
   } catch (err) {
     next(err);
