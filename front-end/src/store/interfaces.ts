@@ -50,3 +50,8 @@ export interface EventsReturn {
     error?: Error;
   };
 }
+
+export interface Paginators {
+  limit: number;
+  skip: number;
+}

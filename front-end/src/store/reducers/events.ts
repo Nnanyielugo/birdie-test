@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 
 const initialState: EventsState = {
   events: [],
-  limit: 0,
+  limit: 100,
   skip: 0,
   isFetching: false,
   error: null,
