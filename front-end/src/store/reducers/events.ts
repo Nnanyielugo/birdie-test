@@ -2,11 +2,11 @@ import { EventsState, EventsAction, AppActions } from '../interfaces';
 import { Reducer } from 'redux';
 
 const initialState: EventsState = {
-  events: [],
   limit: 100,
   skip: 0,
   isFetching: false,
   error: null,
+  events: [],
 };
 
 export const eventsReducer: Reducer<EventsState> = (
@@ -17,7 +17,7 @@ export const eventsReducer: Reducer<EventsState> = (
     case AppActions.FetchEventsSucceeded:
       return {
         ...state,
-        ...action.payload.events,
+        ...action.payload,
       };
     case AppActions.FetchEventsFailed:
       return {

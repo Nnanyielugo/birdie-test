@@ -1,15 +1,16 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import { /*styled, */ createGlobalStyle } from 'styled-components';
 import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { Events, AppActions } from '@App/store/interfaces';
-import Title from '@App/components/Title';
-import Logo from '@App/components/Logo';
-import SubTitle from '@App/components/SubTitle';
+// import Title from '@App/components/Title';
+// import Logo from '@App/components/Logo';
+// import SubTitle from '@App/components/SubTitle';
+import { Timeline } from './timeline';
 
-const LogoUrl = require('../../assets/images/logo-birdie.svg');
+// const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
 interface AppProps {
   events: Events[];
@@ -23,6 +24,18 @@ interface DispatchReturn {
 interface AppState {}
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    ::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    ::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  }
   body {
     height: 100vh;
     background-color: #F9F9F9;
@@ -32,14 +45,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+// const AppContainer = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+// `;
 
 class App extends React.Component<AppProps, AppState> {
   public constructor(props: AppProps) {
@@ -50,15 +63,24 @@ class App extends React.Component<AppProps, AppState> {
     this.props.fetchEvents();
   }
 
+  // private initialLoadingState(): JSX.Element {
+  //   return (
+  //     <>
+  //       <GlobalStyle />
+  //       <AppContainer>
+  //         <Logo src={LogoUrl} />
+  //         <Title>Welcome to the birdie test</Title>
+  //         <SubTitle>Best of luck!</SubTitle>
+  //       </AppContainer>
+  //     </>
+  //   );
+  // }
+
   public render() {
     return (
       <>
         <GlobalStyle />
-        <AppContainer>
-          <Logo src={LogoUrl} />
-          <Title>Welcome to the birdie test</Title>
-          <SubTitle>Best of luck!</SubTitle>
-        </AppContainer>
+        <Timeline events={this.props.events} />
       </>
     );
   }
