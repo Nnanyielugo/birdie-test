@@ -30,11 +30,11 @@ class MoodsClass extends React.Component<AppProps> {
   }
 
   componentDidMount() {
+    this.props.changeOffSet(0);
     this.handleFetchMoods();
   }
 
   componentDidUpdate(prevProps: AppProps) {
-    // tslint:disable-next-line:no-console
     if (prevProps.moods.skip !== this.props.moods.skip) {
       this.handleFetchMoods();
     }
@@ -56,8 +56,6 @@ class MoodsClass extends React.Component<AppProps> {
           loaded={!loading}
           pageNeighbors={2}
           onPageChanged={(props: { offset: number }) => {
-            // tslint:disable-next-line:no-console
-            console.log('paginator props', props);
             this.props.changeOffSet(props.offset);
           }}
         />

@@ -31,16 +31,11 @@ class EventsClass extends React.Component<AppProps> {
   }
 
   componentDidMount() {
+    this.props.changeOffSet(0);
     this.handleFetchEvents();
   }
 
   componentDidUpdate(prevProps: AppProps) {
-    // tslint:disable-next-line:no-console
-    console.log(
-      'did update, props',
-      prevProps.events.skip,
-      this.props.events.skip
-    );
     if (prevProps.events.skip !== this.props.events.skip) {
       this.handleFetchEvents();
     }
@@ -62,8 +57,6 @@ class EventsClass extends React.Component<AppProps> {
           loaded={!loading}
           pageNeighbors={2}
           onPageChanged={(props: { offset: number }) => {
-            // tslint:disable-next-line:no-console
-            console.log('paginator props', props);
             this.props.changeOffSet(props.offset);
           }}
         />
