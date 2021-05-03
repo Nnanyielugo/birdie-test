@@ -8,6 +8,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Events, AppActions } from '@App/store/interfaces';
 // import Logo from '@App/components/Logo';
 import { Timeline } from '@App/components/timeline';
+import { Moods } from '@App/components/moods';
 import { Navigation } from '../navigation';
 
 // const LogoUrl = require('../../assets/images/logo-birdie.svg');
@@ -68,6 +69,9 @@ class App extends React.Component<AppProps, AppState> {
         <Switch>
           <Route exact={true} path="/">
             <Timeline events={this.props.events} />
+          </Route>
+          <Route path="/mood-observation">
+            <Moods events={this.props.events} />
           </Route>
         </Switch>
       </>
