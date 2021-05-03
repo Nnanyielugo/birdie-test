@@ -1,24 +1,13 @@
 import * as React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { RootState } from '@App/store/reducers';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
-import { Events, AppActions } from '@App/store/interfaces';
-import { Timeline } from '@App/components/timeline';
-import { Moods } from '@App/components/moods';
+import Events from '@App/components/events';
+import Moods from '@App/components/moods';
 import { Navigation } from '@App/components/navigation';
 import { Error404 } from '@App/components/error404';
 
-interface AppProps {
-  events: Events[];
-  fetchEvents: () => void;
-}
-
-interface DispatchReturn {
-  fetchEvents: () => void;
-}
+interface AppProps {}
 
 interface AppState {}
 
@@ -42,10 +31,6 @@ class App extends React.Component<AppProps, AppState> {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchEvents();
-  }
-
   public render() {
     return (
       <>
@@ -53,10 +38,10 @@ class App extends React.Component<AppProps, AppState> {
         <Navigation />
         <Switch>
           <Route exact={true} path="/">
-            <Timeline events={this.props.events} />
+            <Events />
           </Route>
           <Route path="/mood-observation">
-            <Moods events={this.props.events} />
+            <Moods />
           </Route>
           <Route path="*">
             <Error404 />
@@ -67,13 +52,4 @@ class App extends React.Component<AppProps, AppState> {
   }
 }
 
-const mapStateToProps = (state: RootState, ownProps: object) => {
-  const events = state.events.events;
-  return { events };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch<RootState>): DispatchReturn => ({
-  fetchEvents: () => dispatch({ type: AppActions.FetchEventsRequested }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
