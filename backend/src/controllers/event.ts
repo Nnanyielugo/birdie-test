@@ -18,16 +18,18 @@ export async function findAll(
       skip = parseInt(req.query.skip);
     }
 
-    const events = await EventModel.findAll({
+    const { rows, count } = await EventModel.findAndCountAll({
       limit: limit,
       offset: skip,
       attributes: ['payload'],
       order: [['timestamp', 'desc']],
     });
     res.status(200).json({
-      events,
+      events: rows,
       limit,
       skip,
+      total: count,
+      pages: Math.ceil(count / limit),
     });
   } catch (err) {
     next(err);
@@ -51,7 +53,7 @@ export async function getMoods(
       skip = parseInt(req.query.skip);
     }
 
-    const moods = await EventModel.findAll({
+    const { rows, count } = await EventModel.findAndCountAll({
       limit: limit,
       offset: skip,
       attributes: ['payload'],
@@ -61,9 +63,11 @@ export async function getMoods(
       order: [['timestamp', 'desc']],
     });
     res.status(200).json({
-      moods,
+      moods: rows,
       limit,
       skip,
+      total: count,
+      pages: Math.ceil(count / limit),
     });
   } catch (err) {
     next(err);

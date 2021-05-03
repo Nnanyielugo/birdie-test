@@ -2,9 +2,11 @@ export enum AppActions {
   FetchEventsRequested = 'FETCH_EVENTS_REQUESTED',
   FetchEventsSucceeded = 'FETCH_EVENTS_SUCCEEDED',
   FetchEventsFailed = 'FETCH_EVENTS_FAILED',
+  ChangeEventsOffset = 'CHANGE_EVENTS_OFFSET',
   FetchMoodsRequested = 'FETCH_MOODS_REQUESTED',
   FetchMoodsSucceeded = 'FETCH_MOODS_SUCCEEDED',
   FetchMoodsFailed = 'FETCH_MOODS_FAILED',
+  ChangeMoodsOffset = 'CHANGE_MOODS_OFFSET',
 }
 
 export interface Events {
@@ -24,6 +26,9 @@ export interface EventsState {
   skip: number;
   events: Events[];
   error: Error | null;
+  total: number;
+  pages: number;
+  loading: boolean;
 }
 
 export interface EventsAction {
@@ -31,6 +36,7 @@ export interface EventsAction {
   payload: {
     events?: Events[];
     error?: Error;
+    offset?: number;
   };
 }
 
@@ -60,6 +66,9 @@ export interface MoodsState {
   skip: number;
   moods: Moods[];
   error: Error | null;
+  total: number;
+  pages: number;
+  loading: boolean;
 }
 
 export interface MoodsAction {
@@ -67,6 +76,7 @@ export interface MoodsAction {
   payload: {
     moods?: Moods[];
     error?: Error;
+    offset?: number;
   };
 }
 

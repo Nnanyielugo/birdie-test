@@ -31,9 +31,9 @@ describe('Events Controller', (): void => {
         .query({ limit });
 
       expect(response.status).toBe(200);
-      expect(response.body).toHaveProperty('events');
-      expect(response.body.events.length).toBe(limit);
-      expect(response.body.events[0]).toHaveProperty('payload');
+      expect(response.body).toHaveProperty('moods');
+      expect(response.body.moods.length).toBe(limit);
+      expect(response.body.moods[0]).toHaveProperty('payload');
     });
   });
 

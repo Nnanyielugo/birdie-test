@@ -11,7 +11,10 @@ const getPaginators = (state: RootState): Paginators => ({
 
 async function fetchMoods(paginators: Paginators): Promise<MoodsReturn> {
   try {
-    const apiEndpoint = process.env.REACT_APP_apiEndpoint;
+    const apiEndpoint =
+      process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_apiEndpoint
+        : process.env.REACT_APP_productionEndpoint;
     const response = await axios.get(
       `${apiEndpoint}/api/events/moods?${qs.stringify(paginators)}`
     );
