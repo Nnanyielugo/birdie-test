@@ -4,8 +4,6 @@ import { Events } from '@App/store/interfaces';
 import Section from './Section';
 import List from './List';
 import ListItem from './ListItem';
-// import Item from './Item';
-// import TimeCard from './TimeCard';
 
 interface TimelineProps {
   events: Events[];

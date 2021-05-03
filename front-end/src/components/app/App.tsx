@@ -6,12 +6,10 @@ import { Dispatch } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
 import { Events, AppActions } from '@App/store/interfaces';
-// import Logo from '@App/components/Logo';
 import { Timeline } from '@App/components/timeline';
 import { Moods } from '@App/components/moods';
-import { Navigation } from '../navigation';
-
-// const LogoUrl = require('../../assets/images/logo-birdie.svg');
+import { Navigation } from '@App/components/navigation';
+import { Error404 } from '@App/components/error404';
 
 interface AppProps {
   events: Events[];
@@ -48,19 +46,6 @@ class App extends React.Component<AppProps, AppState> {
     this.props.fetchEvents();
   }
 
-  // private initialLoadingState(): JSX.Element {
-  //   return (
-  //     <>
-  //       <GlobalStyle />
-  //       <AppContainer>
-  //         <Logo src={LogoUrl} />
-  //         <Title>Welcome to the birdie test</Title>
-  //         <SubTitle>Best of luck!</SubTitle>
-  //       </AppContainer>
-  //     </>
-  //   );
-  // }
-
   public render() {
     return (
       <>
@@ -72,6 +57,9 @@ class App extends React.Component<AppProps, AppState> {
           </Route>
           <Route path="/mood-observation">
             <Moods events={this.props.events} />
+          </Route>
+          <Route path="*">
+            <Error404 />
           </Route>
         </Switch>
       </>
