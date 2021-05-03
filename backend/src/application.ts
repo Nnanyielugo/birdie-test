@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as logger from 'morgan';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 import * as path from 'path';
@@ -11,6 +10,7 @@ const app: express.Express = express();
 const isDev: boolean = app.get('env') === 'development';
 
 if (isDev) {
+  const logger = require('morgan');
   app.use(logger('dev'));
   app.use(
     cors({

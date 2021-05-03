@@ -16,7 +16,6 @@
     "test:watch": "jest --watch",
     "dev": "nodemon index.ts",
     "build": "tsc --project ./",
-    "postinstall": "npm run build",
     "start": "node lib/index.js"
   },
   "dependencies": {
