@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { Dispatch, AnyAction } from 'redux';
 
 import { Moods, AppActions } from '@App/store/interfaces';
 import Section from './Section';
 import List from './List';
 import ListItem from './ListItem';
+import Loader from '@App/components/loader';
 
 interface AppProps {
   moods: Moods[];
@@ -16,21 +17,26 @@ interface AppProps {
 interface DispatchReturn {
   fetchMoods: () => void;
 }
-
-interface AppState {}
-
-class MoodsClass extends React.Component<AppProps, AppState> {
+class MoodsClass extends React.Component<AppProps> {
   public constructor(props: AppProps) {
     super(props);
   }
 
+  async handleFetchMoods(): Promise<void> {
+    this.setState({ isLoading: true });
+    await this.props.fetchMoods();
+    this.setState({ isLoading: false });
+  }
+
   componentDidMount() {
-    this.props.fetchMoods();
+    this.handleFetchMoods();
   }
 
   public render() {
+    const { moods } = this.props;
     return (
       <Section>
+        {!Boolean(moods.length) && <Loader />}
         <List>
           {this.props.moods.map((event: Moods) => {
             return <ListItem item={event} key={event.payload.id} />;
@@ -46,7 +52,7 @@ const mapStateToProps = (state: RootState, ownProps: object) => {
   return { moods };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<RootState>): DispatchReturn => ({
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>): DispatchReturn => ({
   fetchMoods: () => dispatch({ type: AppActions.FetchMoodsRequested }),
 });
 

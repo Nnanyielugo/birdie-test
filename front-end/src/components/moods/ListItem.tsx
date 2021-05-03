@@ -1,26 +1,22 @@
 import * as React from 'react';
 import format from 'date-fns/format';
-import { Events } from '@App/store/interfaces';
+import { Moods } from '@App/store/interfaces';
 import Item from './Item';
 import Card from './Card';
 import Time from './Time';
 
 interface ItemProps {
-  item: Events;
+  item: Moods;
 }
 
-function formatEventType(word: string): string {
-  let strArr = word.split('_');
-  let firstWord = strArr[0];
-  const firstLetterUpper = firstWord[0].toUpperCase();
-  firstWord = firstLetterUpper + firstWord.slice(1);
-  strArr.splice(0, 1, firstWord);
-  return strArr.join(' ');
+function formatMoodType(word: string): string {
+  const firstLetterUpper = word[0].toUpperCase();
+  return firstLetterUpper + word.slice(1);
 }
 
 const ListItem: React.FC<ItemProps> = ({ item: { payload } }): JSX.Element => {
   const dateObj = new Date(payload.timestamp);
-  const formattedEventType = formatEventType(payload.event_type);
+  const formattedEventType = formatMoodType(payload.mood);
 
   return (
     <Item>
