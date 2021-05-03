@@ -28,7 +28,8 @@ export async function findAll(
       events: rows,
       limit,
       skip,
-      count,
+      total: count,
+      pages: Math.ceil(count / limit),
     });
   } catch (err) {
     next(err);
@@ -65,7 +66,8 @@ export async function getMoods(
       moods: rows,
       limit,
       skip,
-      count,
+      total: count,
+      pages: Math.ceil(count / limit),
     });
   } catch (err) {
     next(err);

@@ -20,7 +20,7 @@ const Item = styled.li`
   }
   :nth-child(odd) {
     &::after {
-      background: #FFF;
+      background: #fff;
     }
   }
   :nth-child(even) {
@@ -49,11 +49,11 @@ const Item = styled.li`
     margin-left: 20px;
     :nth-child(even) ${Card} {
       text-align: left;
-      left: 45px
+      left: 45px;
       ::before {
         left: -15px;
         border-width: 8px 16px 8px 0;
-        border-color: transparent #F45B69 transparent transparent;
+        border-color: transparent #f45b69 transparent transparent;
       }
     }
   }

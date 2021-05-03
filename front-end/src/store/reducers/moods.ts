@@ -6,6 +6,9 @@ const initialState: MoodsState = {
   skip: 0,
   error: null,
   moods: [],
+  total: 0,
+  pages: 0,
+  loading: false,
 };
 
 export const moodsReducer: Reducer<MoodsState> = (
@@ -13,10 +16,21 @@ export const moodsReducer: Reducer<MoodsState> = (
   action: MoodsAction
 ): MoodsState => {
   switch (action.type) {
+    case AppActions.ChangeMoodsOffset:
+      return {
+        ...state,
+        skip: action.payload.offset ? action.payload.offset : 0,
+      };
+    case AppActions.FetchMoodsRequested:
+      return {
+        ...state,
+        loading: true,
+      };
     case AppActions.FetchMoodsSucceeded:
       return {
         ...state,
         ...action.payload,
+        loading: false,
       };
     case AppActions.FetchMoodsFailed:
       return {
@@ -24,6 +38,7 @@ export const moodsReducer: Reducer<MoodsState> = (
         error: {
           message: action.payload.error && action.payload.error.message,
         },
+        loading: false,
       };
     default:
       return state;
