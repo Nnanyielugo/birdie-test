@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
+import * as path from 'path';
 import { appRouter as apiRouter } from './routes';
 import { IError } from './interfaces';
 import { CustomError } from './utils/Error';
@@ -21,7 +22,14 @@ if (isDev) {
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', apiRouter);
+app.get('/', (_req: express.Request, res: express.Response) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('*', (_req: express.Request, res: express.Response) => {
+  res.redirect('/');
+});
 
 // Error Handlers
 app.use(
