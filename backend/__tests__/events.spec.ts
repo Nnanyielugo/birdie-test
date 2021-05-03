@@ -23,6 +23,18 @@ describe('Events Controller', (): void => {
       expect(response.body.events.length).toBe(limit);
       expect(response.body.events[0]).toHaveProperty('payload');
     });
+
+    it('Fetches Moods', async (): Promise<void> => {
+      const limit = 20;
+      const response = await request(app)
+        .get('/api/events/moods')
+        .query({ limit });
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('events');
+      expect(response.body.events.length).toBe(limit);
+      expect(response.body.events[0]).toHaveProperty('payload');
+    });
   });
 
   describe('Failing tests', (): void => {
