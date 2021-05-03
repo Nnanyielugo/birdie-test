@@ -18,14 +18,14 @@ export async function findAll(
       skip = parseInt(req.query.skip);
     }
 
-    const moods = await EventModel.findAll({
+    const events = await EventModel.findAll({
       limit: limit,
       offset: skip,
       attributes: ['payload'],
       order: [['timestamp', 'desc']],
     });
     res.status(200).json({
-      moods,
+      events,
       limit,
       skip,
     });
@@ -51,7 +51,7 @@ export async function getMoods(
       skip = parseInt(req.query.skip);
     }
 
-    const events = await EventModel.findAll({
+    const moods = await EventModel.findAll({
       limit: limit,
       offset: skip,
       attributes: ['payload'],
@@ -61,7 +61,7 @@ export async function getMoods(
       order: [['timestamp', 'desc']],
     });
     res.status(200).json({
-      events,
+      moods,
       limit,
       skip,
     });
