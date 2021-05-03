@@ -9,6 +9,7 @@ import Section from './Section';
 import List from './List';
 import ListItem from './ListItem';
 import Loader from '@App/components/loader';
+import { ErrorComponent } from '../error';
 
 interface AppProps {
   events: EventsState;
@@ -43,9 +44,17 @@ class EventsClass extends React.Component<AppProps> {
 
   public render() {
     const {
-      events: { events, limit, total, loading, skip },
+      events: { events, limit, total, loading, skip, error },
     } = this.props;
-    // TODO: ERROR HANDLING
+
+    if (error && error.message) {
+      return (
+        <Section>
+          <ErrorComponent />
+        </Section>
+      );
+    }
+
     return (
       <Section>
         {loading && <Loader />}

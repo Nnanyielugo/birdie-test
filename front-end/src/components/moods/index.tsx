@@ -9,6 +9,7 @@ import Section from './Section';
 import List from './List';
 import ListItem from './ListItem';
 import Loader from '@App/components/loader';
+import { ErrorComponent } from '../error';
 
 interface AppProps {
   moods: MoodsState;
@@ -42,9 +43,13 @@ class MoodsClass extends React.Component<AppProps> {
 
   public render() {
     const {
-      moods: { moods, limit, total, loading, skip },
+      moods: { moods, limit, total, loading, skip, error },
     } = this.props;
-    // TODO: ERROR HANDLING
+
+    if (error && error.message) {
+      return <ErrorComponent />;
+    }
+
     return (
       <Section>
         {loading && <Loader />}
