@@ -2,7 +2,6 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nnanyielugo.github.io/birdie-test",
   "dependencies": {
     "axios": "^0.21.1",
     "date-fns": "^2.21.1",
@@ -21,9 +20,7 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "create:component": "./node_modules/hygen/lib/bin.js component create",
-    "create:store:item": "./node_modules/hygen/lib/bin.js store create",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "create:store:item": "./node_modules/hygen/lib/bin.js store create"
   },
   "jest": {
     "moduleNameMapper": {
