@@ -1,24 +1,24 @@
-import { EventsState, EventsAction, AppActions } from '../interfaces';
+import { MoodsState, MoodsAction, AppActions } from '../interfaces';
 import { Reducer } from 'redux';
 
-const initialState: EventsState = {
+const initialState: MoodsState = {
   limit: 100,
   skip: 0,
   error: null,
-  events: [],
+  moods: [],
 };
 
-export const eventsReducer: Reducer<EventsState> = (
+export const moodsReducer: Reducer<MoodsState> = (
   state = initialState,
-  action: EventsAction
-): EventsState => {
+  action: MoodsAction
+): MoodsState => {
   switch (action.type) {
-    case AppActions.FetchEventsSucceeded:
+    case AppActions.FetchMoodsSucceeded:
       return {
         ...state,
         ...action.payload,
       };
-    case AppActions.FetchEventsFailed:
+    case AppActions.FetchMoodsFailed:
       return {
         ...state,
         error: {

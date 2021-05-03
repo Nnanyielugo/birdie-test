@@ -1,44 +1,29 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { RootState } from '@App/store/reducers';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { createGlobalStyle } from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
 
-import { Events, AppActions } from '@App/store/interfaces';
-import Title from '@App/components/Title';
-import Logo from '@App/components/Logo';
-import SubTitle from '@App/components/SubTitle';
+import Events from '@App/components/events';
+import Moods from '@App/components/moods';
+import { Navigation } from '@App/components/navigation';
+import { Error404 } from '@App/components/error404';
 
-const LogoUrl = require('../../assets/images/logo-birdie.svg');
-
-interface AppProps {
-  events: Events[];
-  fetchEvents: () => void;
-}
-
-interface DispatchReturn {
-  fetchEvents: () => void;
-}
+interface AppProps {}
 
 interface AppState {}
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   body {
     height: 100vh;
-    background-color: #F9F9F9;
+    background-color: #456990;
     > div {
       height: 100%;
     }
   }
-`;
-
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 `;
 
 class App extends React.Component<AppProps, AppState> {
@@ -46,31 +31,25 @@ class App extends React.Component<AppProps, AppState> {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchEvents();
-  }
-
   public render() {
     return (
       <>
         <GlobalStyle />
-        <AppContainer>
-          <Logo src={LogoUrl} />
-          <Title>Welcome to the birdie test</Title>
-          <SubTitle>Best of luck!</SubTitle>
-        </AppContainer>
+        <Navigation />
+        <Switch>
+          <Route exact={true} path="/">
+            <Events />
+          </Route>
+          <Route path="/mood-observation">
+            <Moods />
+          </Route>
+          <Route path="*">
+            <Error404 />
+          </Route>
+        </Switch>
       </>
     );
   }
 }
 
-const mapStateToProps = (state: RootState, ownProps: object) => {
-  const events = state.events.events;
-  return { events };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch<RootState>): DispatchReturn => ({
-  fetchEvents: () => dispatch({ type: AppActions.FetchEventsRequested }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
