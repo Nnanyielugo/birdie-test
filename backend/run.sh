@@ -7,7 +7,7 @@ npm run build
 
 cp -pPR -f ../front-end/build lib/public
 heroku login -i
-git init
+# git init
 heroku git:remote -a birdie-test-0
 git add .
 git commit -am "make it better"
