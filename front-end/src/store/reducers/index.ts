@@ -3,10 +3,12 @@ import { eventsReducer } from './events';
 import { moodsReducer } from './moods';
 import { EventsState, MoodsState } from '../interfaces';
 
-export type RootState = Readonly<{
+type Root = {
   events: EventsState;
   moods: MoodsState;
-}>;
+};
+
+export type RootState = Readonly<Root>;
 
 export const rootReducer = combineReducers<RootState>({
   events: eventsReducer,
