@@ -4,7 +4,6 @@ import { Reducer } from 'redux';
 const initialState: MoodsState = {
   limit: 100,
   skip: 0,
-  isFetching: false,
   error: null,
   moods: [],
 };

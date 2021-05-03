@@ -17,15 +17,26 @@ interface DispatchReturn {
   fetchEvents: () => void;
 }
 
-interface AppState {}
+interface AppState {
+  isLoading: boolean;
+}
 
 class EventsClass extends React.Component<AppProps, AppState> {
   public constructor(props: AppProps) {
     super(props);
+    this.state = {
+      isLoading: false,
+    };
+  }
+
+  async handleFetchEvents(): Promise<void> {
+    this.setState({ isLoading: true });
+    await this.props.fetchEvents();
+    this.setState({ isLoading: false });
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    this.handleFetchEvents();
   }
 
   public render() {

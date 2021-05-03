@@ -23,7 +23,6 @@ export interface EventsState {
   limit: number;
   skip: number;
   events: Events[];
-  isFetching: boolean;
   error: Error | null;
 }
 
@@ -60,7 +59,6 @@ export interface MoodsState {
   limit: number;
   skip: number;
   moods: Moods[];
-  isFetching: boolean;
   error: Error | null;
 }
 
