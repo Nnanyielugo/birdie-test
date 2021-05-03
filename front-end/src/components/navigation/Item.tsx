@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Item = styled.a`
+const Item = styled(Link)`
   color: #f2f2f2;
   text-align: center;
-  padding: 20px 20px;
+  padding: 20px 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   text-decoration: none;
   line-height: 2;
   font-size: 17px;
@@ -12,7 +15,7 @@ const Item = styled.a`
     color: black;
   }
   &.active {
-    background-color: #04aa6d;
+    background-color: #f45b69;
     color: white;
   }
 `;

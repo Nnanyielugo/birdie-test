@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { /*styled, */ createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { Switch, Route } from 'react-router-dom';
 
 import { Events, AppActions } from '@App/store/interfaces';
-// import Title from '@App/components/Title';
 // import Logo from '@App/components/Logo';
-// import SubTitle from '@App/components/SubTitle';
-import { Timeline } from './timeline';
+import { Timeline } from '@App/components/timeline';
+import { Navigation } from '../navigation';
 
 // const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
@@ -25,34 +25,18 @@ interface AppState {}
 
 const GlobalStyle = createGlobalStyle`
   * {
-    ::before {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    ::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   body {
     height: 100vh;
-    background-color: #F9F9F9;
+    background-color: #456990;
     > div {
       height: 100%;
     }
   }
 `;
-
-// const AppContainer = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-direction: column;
-// `;
 
 class App extends React.Component<AppProps, AppState> {
   public constructor(props: AppProps) {
@@ -80,7 +64,12 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <>
         <GlobalStyle />
-        <Timeline events={this.props.events} />
+        <Navigation />
+        <Switch>
+          <Route exact={true} path="/">
+            <Timeline events={this.props.events} />
+          </Route>
+        </Switch>
       </>
     );
   }
