@@ -1,9 +1,9 @@
 import * as React from 'react';
 import format from 'date-fns/format';
 import { Events } from '@App/store/interfaces';
-import Item from './Item';
-import Card from './Card';
-import Time from './Time';
+import Item from '@App/components/events/Item';
+import Card from '@App/components/events/Card';
+import Time from '@App/components/events/Time';
 
 interface ItemProps {
   item: Events;

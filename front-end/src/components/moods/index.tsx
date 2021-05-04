@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch, AnyAction } from 'redux';
 
-import Pagination from '../pagination';
-import { Moods, MoodsState, AppActions } from '@App/store/interfaces';
-import Section from './Section';
-import List from './List';
-import ListItem from './ListItem';
+import Pagination from '@App/components/pagination';
+import {
+  Moods,
+  MoodsState,
+  AppActions,
+  RootState,
+} from '@App/store/interfaces';
+import Section from '@App/components/moods/Section';
+import List from '@App/components/moods/List';
+import ListItem from '@App/components/moods/ListItem';
 import Loader from '@App/components/loader';
-import { ErrorComponent } from '../error';
+import { ErrorComponent } from '@App/components/error';
 
 interface AppProps {
   moods: MoodsState;

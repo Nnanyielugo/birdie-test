@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Container from './Container';
-import Item from './Item';
+import Container from '@App/components/loader/Container';
+import Item from '@App/components/loader/Item';
 
 const Loader = styled.div`
   display: flex;

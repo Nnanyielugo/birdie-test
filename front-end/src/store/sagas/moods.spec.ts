@@ -1,6 +1,10 @@
-import { initFetchMoods, getPaginators, fetchMoods } from './moods';
 import { select, call, put } from 'redux-saga/effects';
-import { Paginators, MoodsState, AppActions } from '../interfaces';
+import {
+  initFetchMoods,
+  getPaginators,
+  fetchMoods,
+} from '@App/store/sagas/moods';
+import { Paginators, MoodsState, AppActions } from '@App/store/interfaces';
 
 describe('Mood saga test', () => {
   const generator: Generator = initFetchMoods();

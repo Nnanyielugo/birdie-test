@@ -1,4 +1,4 @@
-import { EventsState, EventsAction, AppActions } from '../interfaces';
+import { EventsState, EventsAction, AppActions } from '@App/store/interfaces';
 import { Reducer } from 'redux';
 
 const initialState: EventsState = {

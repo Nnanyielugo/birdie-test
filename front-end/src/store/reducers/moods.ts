@@ -1,4 +1,4 @@
-import { MoodsState, MoodsAction, AppActions } from '../interfaces';
+import { MoodsState, MoodsAction, AppActions } from '@App/store/interfaces';
 import { Reducer } from 'redux';
 
 const initialState: MoodsState = {
