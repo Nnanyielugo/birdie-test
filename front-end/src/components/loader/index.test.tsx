@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
+import Loader from './';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from '@App/store';
@@ -10,7 +10,7 @@ it('renders without crashing', () => {
   ReactDOM.render(
     <Router>
       <Provider store={store}>
-        <App />
+        <Loader />
       </Provider>
     </Router>,
     div

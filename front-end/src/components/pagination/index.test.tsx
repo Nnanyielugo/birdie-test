@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
+import Paginator from './';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from '@App/store';
@@ -10,7 +10,14 @@ it('renders without crashing', () => {
   ReactDOM.render(
     <Router>
       <Provider store={store}>
-        <App />
+        <Paginator
+          totalItems={20}
+          limit={5}
+          loaded={false}
+          pageNeighbors={2}
+          onPageChanged={(props) => {}}
+          skip={5}
+        />
       </Provider>
     </Router>,
     div

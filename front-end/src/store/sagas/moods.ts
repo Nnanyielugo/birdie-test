@@ -4,12 +4,12 @@ import { put, takeEvery, call, select, StrictEffect } from 'redux-saga/effects';
 import { AppActions, MoodsReturn, Paginators } from '../interfaces';
 import { RootState } from '../reducers';
 
-const getPaginators = (state: RootState): Paginators => ({
+export const getPaginators = (state: RootState): Paginators => ({
   limit: state.moods.limit,
   skip: state.moods.skip,
 });
 
-async function fetchMoods(paginators: Paginators): Promise<MoodsReturn> {
+export async function fetchMoods(paginators: Paginators): Promise<MoodsReturn> {
   try {
     const apiEndpoint =
       process.env.NODE_ENV === 'development'
