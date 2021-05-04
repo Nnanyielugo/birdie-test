@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import Section from './Section';
-import Nav from './Nav';
-import Link from './CustomLink';
+import Nav from '@App/components/navigation/Nav';
+import Link from '@App/components/navigation/CustomLink';
 
 export const Navigation: React.FC = (): JSX.Element => {
   return (

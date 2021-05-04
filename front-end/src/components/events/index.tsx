@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { RootState } from '@App/store/reducers';
 import { connect } from 'react-redux';
 import { Dispatch, AnyAction } from 'redux';
 
 import Pagination from '../pagination';
-import { Events, EventsState, AppActions } from '@App/store/interfaces';
-import Section from './Section';
-import List from './List';
-import ListItem from './ListItem';
+import {
+  Events,
+  EventsState,
+  AppActions,
+  RootState,
+} from '@App/store/interfaces';
+import Section from '@App/components/events/Section';
+import List from '@App/components/events/List';
+import ListItem from '@App/components/events/ListItem';
 import Loader from '@App/components/loader';
-import { ErrorComponent } from '../error';
+import { ErrorComponent } from '@App/components/error';
 
 interface AppProps {
   events: EventsState;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import format from 'date-fns/format';
 import { Moods } from '@App/store/interfaces';
-import Item from './Item';
-import Card from './Card';
-import Time from './Time';
+import Item from '@App/components/moods/Item';
+import Card from '@App/components/moods/Card';
+import Time from '@App/components/moods/Time';
 
 interface ItemProps {
   item: Moods;

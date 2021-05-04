@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Paginator from './';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Paginator from '@App/components/pagination/';
 import store from '@App/store';
 
 it('renders without crashing', () => {

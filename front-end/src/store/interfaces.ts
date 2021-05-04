@@ -104,3 +104,10 @@ export interface Paginators {
   limit: number;
   skip: number;
 }
+
+type Root = {
+  events: EventsState;
+  moods: MoodsState;
+};
+
+export type RootState = Readonly<Root>;

@@ -1,6 +1,10 @@
-import { initFetchEvents, getPaginators, fetchEvents } from './events';
 import { select, call, put } from 'redux-saga/effects';
-import { Paginators, EventsState, AppActions } from '../interfaces';
+import {
+  initFetchEvents,
+  getPaginators,
+  fetchEvents,
+} from '@App/store/sagas/events';
+import { Paginators, EventsState, AppActions } from '@App/store/interfaces';
 
 describe('Events saga test', () => {
   const generator: Generator = initFetchEvents();

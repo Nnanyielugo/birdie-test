@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import Logo from './Logo';
-import Title from './Title';
-import SubTitle from './SubTitle';
+import Logo from '@App/components/error404/Logo';
+import Title from '@App/components/error404/Title';
+import SubTitle from '@App/components/error404/SubTitle';
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
 const AppContainer = styled.div`

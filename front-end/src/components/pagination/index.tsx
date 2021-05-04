@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Item from './Item';
-import Link from './Link';
-import Nav from './Nav';
-import List from './List';
-import Container from './Container';
-import SubContainer from './SubContainer';
+import Item from '@App/components/pagination/Item';
+import Link from '@App/components/pagination/Link';
+import Nav from '@App/components/pagination/Nav';
+import List from '@App/components/pagination/List';
+import Container from '@App/components/pagination/Container';
+import SubContainer from '@App/components/pagination/SubContainer';
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';

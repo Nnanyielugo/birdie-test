@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import Item from './Item';
+import Item from '@App/components/navigation/Item';
 
 interface LinkProps {
   to: string;

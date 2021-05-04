@@ -1,8 +1,12 @@
 import * as qs from 'qs';
 import axios from 'axios';
 import { put, takeEvery, call, select, StrictEffect } from 'redux-saga/effects';
-import { AppActions, EventsReturn, Paginators } from '../interfaces';
-import { RootState } from '../reducers';
+import {
+  AppActions,
+  EventsReturn,
+  Paginators,
+  RootState,
+} from '@App/store/interfaces';
 
 export const getPaginators = (state: RootState): Paginators => ({
   limit: state.events.limit,
